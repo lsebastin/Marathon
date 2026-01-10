@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -62,7 +63,11 @@ public class MarathonTC3 {public static void main(String[] args) throws Interrup
 	String cartcount = driver.findElement(By.xpath("//span[@class='DesktopHeader__cartCount']")).getText();
 	System.out.println("CartCount" + ": " + " " +cartcount);
 	driver.findElement(By.xpath("//span[@class='DesktopHeader__cartCount']")).click();
+	File screenshotAs = driver.getScreenshotAs(OutputType.FILE);
+	File des = new File("./lastpage.png");
+	FileUtils.copyFile(screenshotAs, des);
 	driver.quit();
+	
 }
 }
 
